@@ -1,61 +1,200 @@
-/* Estilos generales del documento */
+/* Base */
+•⁠  ⁠{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
   font-family: system-ui, sans-serif;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
   color: #e6ded1;
   line-height: 1.5;
   background-color: #141110;
 }
 
-header {
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 2rem;
+nav.navbar {
+  font-size: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
+h1.home-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+h1{
+  font-size: 1rem;
+  text-align: center;
+}
+
+p.home-subtitle {
+  font-size: 2rem;
+  text-align: center;
+}
+
+p.about-me-text {
+  font-size: 1.5rem;
+  text-align: left; 
+}
+
+p {
+  font-size: 1rem;
+  text-align: center;
+}
+
+
+/* Título con barra roja detrás */
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+}
+.section-title span {
+  position: relative;
+  display: inline-block;
+}
+.section-title span::after {
+  content: "";
+  position: absolute;
+  right: -1.5rem;
+  bottom: 0;
+  width: 60%;
+  height: 0.3em;
+  background: var(--red);
+  z-index: -1; /* la manda detrás del texto */
+}
+
+/* Layout de dos columnas: texto a la izquierda, tarjetas a la derecha */
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.about-info { max-width: 500px; }
+.avatar { width: 200px; display: block; margin: 0 auto 2rem; }
+.about-info p { line-height: 2; font-size: 1.1rem; }
+
+/* Tres columnas de tarjetas */
+.skills {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center; /* centra verticalmente cada columna */
+}
+.skills-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Tarjeta con borde degradado */
+.skill-card {
+  width: 140px;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    linear-gradient(135deg, var(--blue), var(--red)) border-box;
+}
+.skill-card img {
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+
+main {
+  min-height: 100vh;
+}
+
+.proyects-title {
+  display: flex;
+  font-size: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+} 
+
+
+/* Secciones */
 header,
 #about-me,
 #projects,
 #contact {
-  min-height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 100vh;
   padding: 2rem;
-  box-sizing: border-box;
+}
+
+header {
+  overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 header > *,
 #about-me > *,
 #projects > *,
 #contact > * {
-  width: clamp(300 px, 90%, 1100px);
+  width: min(100%, 1100px);
+  margin-inline: auto;
 }
 
-#projects {
-  align-items: stretch;
+/* Navegación */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-#projects h2 {
-  align-self: center;
-  width: clamp(300px, 90%, 1100px);
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 1rem;
+  list-style: none;
+  background-color: #1a1816;
 }
 
-.card {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto 1.5rem auto;
+nav a {
+  margin-right: 1rem;
+  color: #e6ded1;
+  text-decoration: none;
 }
 
+nav a.active {
+  color: #e05252;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #fff;
+  background-color: #a33d3d;
+}
+
+/* Fondo animado */
 #bg-canvas {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  z-index: -1;
   width: 100%;
   height: 100%;
-  z-index: -1;
 }
 
 header h1,
@@ -65,96 +204,35 @@ header p {
   margin-bottom: 0.25rem;
 }
 
-/*Estilo para la presentacion*/
-.cursor {
-  animation: blink 1s infinite;
-
-}
-@keyframes blink {
-  0%, 50% {
-      opacity: 1;
-    }
-    51%, 10% {
-      opacity: 0;
-    }
-}
-
-
-/* Estilo para la sección "Sobre mí" */
-
-/* Estilo para barra de navegacion */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-nav ul{
-  display: flex;
-  gap: 1rem;
-  background-color: #1a1816;
-  padding: 1rem;
-  list-style: none;
-  justify-content: center;
-}
-
-nav a {
-  text-decoration: none;
-  color: #e6ded1;
-  margin-right: 1rem;
-}
-
-nav a.active {
-  font-weight: bold;
-  color: #e05252;
-}
-
-nav a:hover {
-  background-color: #a33d3d;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-
-/* Cada proyecto es una "card" — así seleccionamos por clase */
-
-.about-me {
-  background-color: #f3ebeb;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
-
-/* Diseño de las tarjetas de proyectos */
-
+/* Tarjetas de proyectos */
 .card {
+  width: min(100%, 1400px);
+  margin: 0 auto 1.5rem;
+  padding: 2rem;
+  color: #6b6459;
   background-color: #e6ded1;
-  color: #1a1712;
   border: 1px solid #8a8175;
   border-radius: 8px;
   outline: 1px solid #8a8175;
   outline-offset: 6px;
-  padding: 2rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  font-family: 'IBM Plex Mono', monospace;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
   letter-spacing: 0.1rem;
-  color: #6b6459;
 }
 
 .card-title {
-  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 1rem;
+  color: #6b6459;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
   letter-spacing: 0.1rem;
-  color: #6b6459;
-  margin-bottom: 1rem;
 }
 
 .card hr {
-  border: none;
-  border-top: 1px solid #8a8175;
   margin: 1rem 0;
+  border: 0;
+  border-top: 1px solid #8a8175;
 }
 
 .card:nth-child(odd) {
@@ -165,8 +243,7 @@ nav a:hover {
   transform: rotate(0.3deg);
 }
 
-/* Cada proyecto es una "card" — así seleccionamos por clase */
-
+/* Otros elementos */
 button {
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -174,6 +251,136 @@ button {
 
 footer {
   margin-top: 3rem;
-  font-size: 0.85rem;
   color: #1d0d0d;
+  font-size: 0.85rem;
+}
+
+/* Animación del cursor */
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+
+.contact {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.contact-intro {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin: 3rem 0;
+}
+
+/* Formulario */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #282828;
+  border: none;
+  padding: 1.4rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: inherit;
+}
+
+.contact-form ::placeholder {
+  color: #999;
+}
+
+.contact-form textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid var(--red);
+}
+
+/* Botón con subrayado rojo */
+.contact-form button {
+  align-self: flex-end;
+  margin-top: 1.5rem;
+  padding: 1rem 1.4rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.form-status {
+  margin-top: 1rem;
+  min-height: 1.5rem;
+}
+
+/* Footer */
+.footer {
+  position: relative;
+  margin-top: 6rem;
+  padding: 4rem 0 2rem;
+  background: #282828;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.back-to-top {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red);
+  color: #fff;
+  font-size: 2rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #282828;
+  font-size: 2.2rem;
+}
+
+.footer-text {
+  color: #d6d0d0;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }

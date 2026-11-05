@@ -10,6 +10,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
+ <!-- Iconos de Font Awesome -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <!-- Aquí conectamos el CSS -->
   <link rel="stylesheet" href="estilos.css">
 </head>
@@ -17,31 +21,57 @@
 
   <header>
     <canvas id="bg-canvas"></canvas>
-    <h1>
+    <h1 class="home-title">
       <span id="typeWriter"></span><span class="cursor">|</span>
     </h1>
-    <p>Desarrollador — .NET, ASP.NET Core, PostgreSQL</p>
+    <p class="home-subtitle">Desarrollador — .NET, ASP.NET Core, PostgreSQL</p>
   </header>
 
 <!-- Barra de navegación -->
-<nav>
+<nav class="navbar"cd>
     <ul>
       <li><a href="#about-me">Sobre mí</a></li>
       <li><a href="#proyects">Proyectos</a></li>
       <li><a href="#contact">Contacto</a></li>
-    </ul> |okey p
+    </ul> 
   </nav>  
 
   <!-- Sección "Sobre mí" -->
-  <section id ="about-me">
-    <h2>Sobre mí</h2>
-    <p>Hola, soy Diego Rojaso , un desarrollador apasionado por la tecnología y la programación. Me especializo en el desarrollo de aplicaciones web utilizando ASP.NET Core y PostgreSQL. Me encanta aprender nuevas tecnologías y mejorar mis habilidades constantemente.</p>
-  </section>
+<section class="about-me" id="about-me">
+  <h2 class="section-title"><span>Sobre mí</span></h2>
+
+  <div class="about-content">
+    <div class="about-info">
+      <!-- Avatar: SVG con trazo degradado -->
+      <svg class="avatar" viewBox="0 0 100 100" fill="none">
+        <defs>
+          <linearGradient id="avatarGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6c8ee0" />
+            <stop offset="100%" stop-color="#f05a63" />
+          </linearGradient>
+        </defs>
+        <ellipse cx="50" cy="30" rx="14" ry="18"
+                 stroke="url(#avatarGradient)" stroke-width="3" />
+        <path d="M15 90 C15 65 35 60 50 60 C65 60 85 65 85 90 Z"
+              stroke="url(#avatarGradient)" stroke-width="3" />
+      </svg>
+
+      <p>
+    Hola, soy Diego Rojas , un desarrollador apasionado por la tecnología y la programación. 
+    Me especializo en el desarrollo de aplicaciones web utilizando ASP.NET Core y PostgreSQL. 
+    Me encanta aprender nuevas tecnologías y mejorar mis habilidades constantemente.
+      </p>
+    </div>
+
+    <!-- Las tarjetas se generan con JavaScript -->
+    <div class="skills" id="skills"></div>
+  </div>
+</section>
 
     <!-- Diseño de las tarjetas de proyectos -->
   <main>
-    <section id="proyects">
-      <h2>Proyectos</h2>
+    <section id="proyects" class="proyects">
+      <h2 class="proyects-title"><span>Proyectos</span></h2>
       
       <article class="card">
         <p class="card-title">CASE - 001 // MURASAKI</p>
@@ -52,10 +82,10 @@
       </article>
 
       <article class="card">
-        <p class="card-title">CASE - 002 // ME-BOOK</p>
-        <h3>E-Book</h3>
+        <p class="card-title">CASE - 002 // TOP-SECRET</p>
+        <h3>Top-Secret</h3>
         <hr>
-        <p>Descripción breve de tu segundo proyecto aquí.</p>
+        <p>Biblioteca para archivar documentos sensibles(Mangas/Manwhas/Novelas).</p>
         <hr>
       </article>
 
@@ -77,15 +107,42 @@
     </section>
   
   <!-- Sección de contacto -->
-  <section id="contact">
-    <h2>Contacto</h2>
-    <p>Puedes contactarme a través de mi correo electrónico: <a href="mailto:">tu.correo@ejemplo.com</a></p>
-  </section>
-  </main>
+<section class="contact" id="contact">
+  <h2 class="section-title"><span>Contactame</span></h2>
 
-  <footer>
-    <p>&copy; 2026 </p>
-  </footer>
+  <p class="contact-intro">
+    Si deseas ponerte en contacto conmigo, puedes enviarme un mensaje a través del siguiente formulario. 
+    Me comprometo a responderte lo antes posible.
+  </p>
+
+  <form class="contact-form" id="contactForm">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message" rows="6" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <p class="form-status" id="formStatus"></p>
+</section>
+
+<!-- boton para ir arriba -->
+<footer class="footer">
+  <a href="#top" class="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-angles-up"></i>
+  </a>
+
+  <div class="footer-links">
+    <a href="https://github.com/your-username" target="_blank" rel="noopener" aria-label="GitHub">
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a href="mailto:you@example.com" aria-label="Email">
+      <i class="fa-solid fa-envelope"></i>
+    </a>
+  </div>
+
+  <p class="footer-text">Pablo Rojas ©2026</p>
+</footer>
+
 
   <!-- El script va al final del body, justo antes de cerrarlo -->
   <script src="main.js"></script>

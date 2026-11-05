@@ -1,5 +1,5 @@
 // Efecto de máquina de escribir para el nombre
-const text = "Hola, soyDiego Rojas";
+const text = "Hola, soy Diego Rojas";
 const element = document.getElementById("typeWriter");
 let index = 0;
 
@@ -102,6 +102,7 @@ animate();
 
 
 //Código para resaltar el enlace de navegación correspondiente a la sección visible
+
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("nav a");
 
@@ -112,6 +113,7 @@ const observer = new IntersectionObserver((entries) => {
 
       navLinks.forEach((link) => {
         link.classList.remove("active");
+
         if (link.getAttribute("href") === `#${visibleId}`) {
           link.classList.add("active");
         }
@@ -123,3 +125,113 @@ const observer = new IntersectionObserver((entries) => {
 sections.forEach((section) => {
   observer.observe(section);
 });
+
+
+
+
+// Código para la seccion "SOBRE MI" 
+const skillColumns = [
+  [
+    { name: "C#", icon: "csharp" },
+    { name: ".NET", icon: "dotnetcore" },
+    { name: "Bootstrap", icon: "bootstrap"},
+  ],
+  [
+    { name: "SQL Server", icon: "microsoftsqlserver", variant: "plain" },
+    { name: "PostgreSQL", icon: "postgresql" },
+    { name: "Git", icon: "git" },
+  ],
+  [
+    { name: "JavaScript", icon: "javascript" },
+    { name: "CSS", icon: "css3" },
+    { name: "HTML", icon: "html5" },
+  ],
+];
+
+function renderSkills() {
+  const container = document.getElementById("skills");
+
+  skillColumns.forEach((column) => {
+    const columnElement = document.createElement("div");
+    columnElement.classList.add("skills-column");
+
+    column.forEach((skill) => {
+      const card = document.createElement("div");
+      card.classList.add("skill-card");
+      card.innerHTML = `
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${skill.icon}/${skill.icon}-original.svg"
+             alt="${skill.name}">
+        <span>${skill.name}</span>
+      `;
+      columnElement.appendChild(card);
+    });
+
+    container.appendChild(columnElement);
+  });
+}
+
+renderSkills();
+
+
+// Código para el formulario de contacto
+const form = document.getElementById("contactForm");
+const statusMessage = document.getElementById("formStatus");
+
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    });
+
+    if (response.ok) {
+      statusMessage.textContent = "Message sent! Thanks for reaching out.";
+      form.reset();
+    } else {
+      throw new Error("Request failed");
+    }
+  } catch (error) {
+    statusMessage.textContent = "Something went wrong. Please try again.";
+  }
+}
+
+form.addEventListener("submit", handleSubmit);
+
+
+const backToTopButton = document.querySelector(".back-to-top");
+
+function easeInOutCubic(progress) {
+    return progress < 0.5
+        ? 4 * progress ** 3
+        : 1 - (-2 * progress + 2) ** 3 / 2;
+}
+
+function smoothScrollToTop(duration = 900) {
+    const startPosition = window.scrollY;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        window.scrollTo(0, startPosition * (1 - easeInOutCubic(progress)));
+
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
+if (backToTopButton) {
+    backToTopButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        smoothScrollToTop();
+    });
+}
